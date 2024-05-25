@@ -1,4 +1,3 @@
-import CarListItem from "./components/cars/CarListItem/CarListItem";
 import Cars from "./components/cars/Cars";
 
 function App() {

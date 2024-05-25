@@ -8,6 +8,12 @@
   border-radius: 4px;
   background-color: #f9f9f9;
 }
+.input-container {
+  position: relative;
+  display: flex;
+  flex: 1;
+  border: 1px solid;
+}
 
 .input {
   padding: 8px;
@@ -34,6 +40,12 @@
   margin-bottom: 0;
 }
 
+.search-button {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 0;
+}
+
 h1 {
-    margin: 0;
+  margin: 0;
 }
