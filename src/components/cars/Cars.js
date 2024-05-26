@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { deleteCar, getCars, searchCar } from "../../api/cars";
 import CarsHeader from "../SearchPanel/SearchPanel";
 import ListItem from "../ListItem/ListItem";
-import CarDetails from "./CarDetails/CarDetails";
+import CarDetails from "./CarDetails";
 
 export default function Cars() {
   const [cars, setCars] = useState([]);

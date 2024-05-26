@@ -1,8 +1,8 @@
-.car-details-container {
+.details-container {
   display: flex;
   flex-direction: column;
 }
-.car-details {
+.details {
   padding-right: 1rem;
   border-right: 1px solid gray;
 }

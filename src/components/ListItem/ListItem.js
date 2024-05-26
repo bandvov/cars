@@ -2,7 +2,13 @@ import React from "react";
 import "./ListItem.css";
 import Actions from "./Actions";
 
-export default function ListItem({ image, children, deleteHandler }) {
+export default function ListItem({
+  image,
+  children,
+  deleteHandler,
+  editHandler,
+  blockHandler,
+}) {
   return (
     <div className="list-container">
       <div
@@ -21,7 +27,11 @@ export default function ListItem({ image, children, deleteHandler }) {
       </div>
       <div className="item">{children}</div>
       <div className="item">
-        <Actions deleteHandler={deleteHandler} />
+        <Actions
+          deleteHandler={deleteHandler}
+          editHandler={editHandler}
+          blockHandler={blockHandler}
+        />
       </div>
     </div>
   );

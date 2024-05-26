@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CarDetailItem({ name, value }) {
+export default function DetailItem({ name, value }) {
   return (
     <div
       style={{
@@ -8,7 +8,7 @@ export default function CarDetailItem({ name, value }) {
         justifyContent: "space-between",
       }}
     >
-      <span>{name}</span>
+      <span>{name}:</span>
       <span>{value}</span>
     </div>
   );
