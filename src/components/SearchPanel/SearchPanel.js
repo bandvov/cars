@@ -35,7 +35,6 @@ const SearchPanel = ({ title, searchHandler }) => {
             position: "absolute",
             right: 0,
           }}
-          disabled={searchTerm === ""}
           onClick={() => {
             searchHandler(searchTerm);
             setSearchTerm("");

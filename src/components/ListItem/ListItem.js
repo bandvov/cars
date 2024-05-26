@@ -1,11 +1,10 @@
 import React from "react";
-import "./CarlistItem.css";
+import "./ListItem.css";
 import Actions from "./Actions";
-import CarDetails from "./CarDetails";
 
-export default function CarListItem({ car, deleteHandler }) {
+export default function ListItem({ image, children, deleteHandler }) {
   return (
-    <div className="cars-container">
+    <div className="list-container">
       <div
         className="item"
         style={{
@@ -17,14 +16,12 @@ export default function CarListItem({ car, deleteHandler }) {
           height="auto"
           width={"100%"}
           loading="lazy"
-          src={car.image}
+          src={image}
         />
       </div>
+      <div className="item">{children}</div>
       <div className="item">
-        <CarDetails car={car} />;
-      </div>
-      <div className="item">
-        <Actions onClick={deleteHandler} />
+        <Actions deleteHandler={deleteHandler} />
       </div>
     </div>
   );

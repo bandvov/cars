@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import CarListItem from "./CarListItem/CarListItem";
 import { deleteCar, getCars, searchCar } from "../../api/cars";
 import CarsHeader from "../SearchPanel/SearchPanel";
+import ListItem from "../ListItem/ListItem";
+import CarDetails from "./CarDetails/CarDetails";
 
 export default function Cars() {
   const [cars, setCars] = useState([]);
@@ -37,10 +38,12 @@ export default function Cars() {
       {cars?.length &&
         cars?.map((car) => {
           return (
-            <CarListItem
-              car={car}
+            <ListItem
+              image={car.image}
               deleteHandler={() => deleteHandler(car.id)}
-            />
+            >
+              <CarDetails car={car} />;
+            </ListItem>
           );
         })}
     </div>
