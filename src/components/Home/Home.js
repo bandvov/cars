@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import Register from "../modals/Register";
 
 export default function HomePage() {
   return (
-    <div>Home page</div>
-  )
+    <div>
+      Home page
+      <Register />
+    </div>
+  );
 }
