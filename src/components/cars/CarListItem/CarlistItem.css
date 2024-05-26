@@ -1,5 +1,6 @@
 .cars-container {
   display: flex;
+  border-bottom: 1px solid;
 }
 
 .cars-container .item {
