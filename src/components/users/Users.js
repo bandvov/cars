@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CarsHeader from "../SearchPanel/SearchPanel";
 import ListItem from "../ListItem/ListItem";
-import { deleteUser, getUsers, searchUser } from "../../api/users";
+import { blockUser, deleteUser, getUsers, searchUser } from "../../api/users";
 import UserDetails from "./UserDetails";
 
 export default function Users() {
@@ -12,6 +12,13 @@ export default function Users() {
       setUsers(res);
     });
   }, []);
+  const blockHandler = (id) => {
+    blockUser(id).then(() => {
+      getUsers().then((res) => {
+        setUsers(res);
+      });
+    });
+  };
   const deleteHandler = (id) => {
     deleteUser(id).then(() => {
       getUsers().then((res) => {
@@ -39,7 +46,7 @@ export default function Users() {
         users?.map((user) => {
           return (
             <ListItem
-              blockHandler={() => {}}
+              blockHandler={()=>blockHandler(user.id)}
               image={user.image}
               deleteHandler={() => deleteHandler(user.id)}
             >
