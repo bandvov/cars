@@ -20,7 +20,7 @@ export default function Cars() {
     });
   };
   const searchHandler = (value) => {
-    searchCar(value).then((res) => {
+    searchCar({ search: value }).then((res) => {
       console.log({ res });
       setCars(res);
     });
