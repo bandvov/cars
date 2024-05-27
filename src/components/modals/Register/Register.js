@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Register.css";
+import FacebookButton from "../FacebookButton";
 
 // Correct regular expression for Ukrainian mobile phone numbers
 const ukrainePhoneRegExp = /^\d{7}$/;
@@ -46,25 +47,25 @@ const RegistrationForm = () => {
         <Form className="form-container">
           <h1>Зареєструйтесь зараз!</h1>
           <div className="form-group">
-            <label htmlFor="first_name">First Name</label>
+            <label htmlFor="first_name">Імя</label>
             <Field type="text" name="first_name" />
             <ErrorMessage name="first_name" component="div" className="error" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="last_name">Last Name</label>
+            <label htmlFor="last_name">Прізвище</label>
             <Field type="text" name="last_name" />
             <ErrorMessage name="last_name" component="div" className="error" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="email">Пошта</label>
             <Field type="email" name="email" />
             <ErrorMessage name="email" component="div" className="error" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone_number">Phone Number</label>
+            <label htmlFor="phone_number">Номер телефону</label>
             <Field name="phone_number" type="number" />
             <ErrorMessage
               name="phone_number"
@@ -73,7 +74,12 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="login">Логін</label>
+            <Field name="login" type="text" />
+            <ErrorMessage name="login" component="div" className="error" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Пароль</label>
             <Field type="password" name="password" />
             <ErrorMessage name="password" component="div" className="error" />
           </div>
@@ -81,6 +87,7 @@ const RegistrationForm = () => {
           <button type="submit" disabled={isSubmitting}>
             Зареєструватись
           </button>
+          <FacebookButton />
         </Form>
       )}
     </Formik>

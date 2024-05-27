@@ -1,5 +1,5 @@
 export const getCars = async () => {
-  return fetch(`http://localhost:4000/cars`).then((res) => {
+  return fetch(`http://localhost:4000/cars`,{credentials:'include'}).then((res) => {
     return res.json();
   });
 };

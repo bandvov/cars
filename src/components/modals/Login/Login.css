@@ -2,16 +2,17 @@
   border-radius: 2rem;
   width: 30%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 40px;
   border: 1px solid orange;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 h1 {
   margin-bottom: 1rem;
+  text-align: center;
 }
 .form-group {
   margin-bottom: 15px;
@@ -26,7 +27,6 @@ label {
 }
 
 input {
-  width: 300px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
