@@ -3,7 +3,6 @@ import { deleteCar, getCars, searchCar } from "../../api/cars";
 import CarsHeader from "../SearchPanel/SearchPanel";
 import ListItem from "../ListItem/ListItem";
 import CarDetails from "./CarDetails";
-import Cookies from "js-cookie";
 
 export default function Cars() {
   const [cars, setCars] = useState([]);
@@ -43,7 +42,7 @@ export default function Cars() {
               image={car.image}
               deleteHandler={() => deleteHandler(car.id)}
             >
-              <CarDetails car={car} />;
+              <CarDetails showTitle car={car} />;
             </ListItem>
           );
         })}

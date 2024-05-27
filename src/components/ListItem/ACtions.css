@@ -17,9 +17,10 @@ button.outlined {
   border: 1px solid orange;
 }
 .car-actions {
+  border-left: 1px solid gray;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  margin: 1rem;
+  padding: 1rem;
 }
