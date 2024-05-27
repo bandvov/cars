@@ -22,17 +22,17 @@ const CarCard = ({ car }) => {
         </div>
         <div className="elem__button">
           {" "}
-          <button onClick={toggleFavorite} className="heart-button">
-            <HeartIcon
-              className={isFavorite ? "heart-icon favorite" : "heart-icon"}
-            />
-          </button>
           <button
             type="submit"
             className="elem__button__elements"
             name={car.id}
           >
             {car.price_per_hour > 0 ? "Орендувати" : "Недоступно для оренди"}
+          </button>
+          <button onClick={toggleFavorite} className="heart-button">
+            <HeartIcon
+              className={isFavorite ? "heart-icon favorite" : "heart-icon"}
+            />
           </button>
         </div>
       </div>

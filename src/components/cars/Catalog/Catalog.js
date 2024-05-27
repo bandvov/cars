@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { getCars, searchCar } from '../../../api/cars.js';
-import CarCard from '../CarCard/CarCard.js';
-import Footer from '../../Footer/Footer.js';
-import Header from '../../Header/Header.js';
-import './Catalog.css';
+import React, { useEffect, useState } from "react";
+import { getCars, searchCar } from "../../../api/cars.js";
+import CarCard from "../CarCard/CarCard.js";
+import "./Catalog.css";
 
 const Catalog = () => {
   const [cars, setCars] = useState([]);
   const [filters, setFilters] = useState({
-    color: '',
-    make: '',
-    category: ''
+    color: "",
+    make: "",
+    category: "",
   });
 
   useEffect(() => {
@@ -25,22 +23,27 @@ const Catalog = () => {
   const handleChange = (e) => {
     setFilters({
       ...filters,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (value) => {
     searchCar(value).then((res) => {
       setCars(res);
-    })
-    
+    });
   };
 
   return (
     <div className="Catalog">
       <div className="body">
         <div className="mainheading">Наші автомобілі</div>
-        <form method="GET" onSubmit={handleSubmit}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log({e});
+            handleSubmit(filters);
+          }}
+        >
           <div className="filters">
             <div className="filters__elem">
               <div className="h2">Колір</div>
@@ -91,14 +94,16 @@ const Catalog = () => {
               </select>
             </div>
             <div className="filters__elem">
-              <button type="submit" name="filter">Застосувати фільтри</button>
+              <button type="submit" name="filter">
+                Застосувати фільтри
+              </button>
             </div>
           </div>
         </form>
         <div className="blue-line"></div>
         <div className="body__content">
           <div className="content__body__elem">
-            {cars.map((car) => (
+            {cars?.map((car) => (
               <CarCard key={car.id} car={car} />
             ))}
           </div>
