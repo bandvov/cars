@@ -5,7 +5,11 @@ function FacebookButton() {
   useEffect(() => {
     console.log(process.env.REACT_APP_FACEBOOK_APP_ID);
   }, []);
-  return <button onClick={loginFacebook}>Facebook login</button>;
+  return (
+    <button onClick={loginFacebook}>
+      зареєструватись з допомогою facebook
+    </button>
+  );
 }
 
 export default FacebookButton;
