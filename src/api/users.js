@@ -3,6 +3,17 @@ export const getUsers = async () => {
     return res.json();
   });
 };
+export const createUser = async (data) => {
+  return fetch(`http://localhost:4000/users/register`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    return res.json();
+  });
+};
 export const blockUser = async (id) => {
   return fetch(`http://localhost:4000/users/${id}`, {
     method: "PATCH",

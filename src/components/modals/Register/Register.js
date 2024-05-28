@@ -3,10 +3,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Register.css";
 import FacebookButton from "../FacebookButton";
+import { createUser } from "../../../api/users";
+import { useNavigate } from "react-router-dom";
 
 // Correct regular expression for Ukrainian mobile phone numbers
-const ukrainePhoneRegExp = /^\d{7}$/;
+const ukrainePhoneRegExp = /^\d{10}$/;
 const RegistrationForm = () => {
+  const navigate = useNavigate();
+
   const validationSchema = Yup.object({
     first_name: Yup.string()
       .max(15, "Must be 15 characters or less")
@@ -24,6 +28,7 @@ const RegistrationForm = () => {
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
       .required("Required"),
+    image: Yup.string().required("Required"),
   });
 
   return (
@@ -35,12 +40,16 @@ const RegistrationForm = () => {
         email: "",
         password: "",
         phone_number: "",
+        image: "",
       }}
       validateOnBlur
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
         console.log(values);
         setSubmitting(false);
+        createUser(values).then((res) => {
+          navigate("/auth/login");
+        });
       }}
     >
       {({ isSubmitting }) => (
@@ -72,6 +81,11 @@ const RegistrationForm = () => {
               component="div"
               className="error"
             />
+          </div>
+          <div className="form-group">
+            <label htmlFor="image">Фото</label>
+            <Field type="text" name="image" />
+            <ErrorMessage name="image" component="div" className="error" />
           </div>
           <div className="form-group">
             <label htmlFor="login">Логін</label>
