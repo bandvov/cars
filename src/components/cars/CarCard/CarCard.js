@@ -4,8 +4,8 @@ import "./CarCard.css";
 import { ReactComponent as HeartIcon } from "./heart.svg";
 import CarDetails from "../CarDetails";
 
-const CarCard = ({ car }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+const CarCard = ({ isFavorited = false, car }) => {
+  const [isFavorite, setIsFavorite] = useState(isFavorited);
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);

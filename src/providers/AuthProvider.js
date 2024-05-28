@@ -6,30 +6,35 @@ const AuthContext = createContext();
 
 // Create a provider component
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [userName, setUserName] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     // Check for user data in cookies on initial render
-    const userData = Cookies.get("name");
-    if (userData) {
-      setUser(userData);
+    const userName = Cookies.get("name");
+    const userId = Cookies.get("user_id");
+    if (userName) {
+      setUserName(userName);
+    }
+    if (userId) {
+      setUserId(userId);
     }
   }, []);
 
   const login = (userCredentials) => {
     // Logic to authenticate user
-    setUser(userCredentials);
+    setUserName(userCredentials);
     Cookies.set("name", JSON.stringify(userCredentials));
   };
 
   const logout = () => {
     // Logic to log out user
-    setUser(null);
+    setUserName(null);
     Cookies.remove("name");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ userName, userId, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

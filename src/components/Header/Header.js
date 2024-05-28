@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Header.css";
 import { useAuth } from "../../providers/AuthProvider";
 
 const Header = () => {
-  const { user } = useAuth();
+  const { userName } = useAuth();
 
   return (
     <section className="header-section">
@@ -38,8 +38,8 @@ const Header = () => {
             </li>
 
             <li className="main-nav-list-item">
-              {user ? (
-                <h3 className="main-nav-link">{user}</h3>
+              {userName ? (
+                <h3 className="main-nav-link">{userName}</h3>
               ) : (
                 <a href="/auth/login" className="main-nav-link">
                   Увійти

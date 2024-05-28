@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { getCars, searchCar } from "../../../api/cars.js";
 import CarCard from "../CarCard/CarCard.js";
 import "./Catalog.css";
+import { useAuth } from "../../../providers/AuthProvider.js";
 
 const Catalog = () => {
+  const { userId } = useAuth();
   const [cars, setCars] = useState([]);
   const [filters, setFilters] = useState({
     color: "",
@@ -40,7 +42,7 @@ const Catalog = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log({e});
+            console.log({ e });
             handleSubmit(filters);
           }}
         >
@@ -104,7 +106,11 @@ const Catalog = () => {
         <div className="body__content">
           <div className="content__body__elem">
             {cars?.map((car) => (
-              <CarCard key={car.id} car={car} />
+              <CarCard
+                isFavorited={car.favorite_user_ids.includes(+userId)}
+                key={car.id}
+                car={car}
+              />
             ))}
           </div>
         </div>
