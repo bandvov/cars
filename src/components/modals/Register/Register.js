@@ -52,7 +52,7 @@ const RegistrationForm = () => {
         });
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isValid }) => (
         <Form className="form-container">
           <h1>Зареєструйтесь зараз!</h1>
           <div className="form-group">
@@ -98,7 +98,7 @@ const RegistrationForm = () => {
             <ErrorMessage name="password" component="div" className="error" />
           </div>
 
-          <button type="submit" disabled={isSubmitting}>
+          <button type="submit" disabled={!isValid}>
             Зареєструватись
           </button>
           <FacebookButton />

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import "./Login.css";
 import FacebookButton from "../FacebookButton";
 import { login } from "../../../api/users";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../providers/AuthProvider";
 
 // Correct regular expression for Ukrainian mobile phone numbers
@@ -45,7 +45,7 @@ const LoginForm = () => {
           });
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isValid, isSubmitting }) => (
           <Form>
             <h1>Авторизація</h1>
             <div className="form-group">
@@ -59,13 +59,18 @@ const LoginForm = () => {
               <ErrorMessage name="password" component="div" className="error" />
             </div>
 
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" disabled={!isValid}>
               Увійти
             </button>
           </Form>
         )}
       </Formik>
-      <div style={{ display: "flex" }}>
+
+      <Link className="registration" to="/auth/registration">
+        Реєстрація
+      </Link>
+
+      <div style={{ display: "flex", margin: "1rem 0" }}>
         <div
           style={{
             flex: 1,

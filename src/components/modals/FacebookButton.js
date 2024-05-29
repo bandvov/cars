@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { loginFacebook } from "../../api/auth";
 
 export default function FacebookButton() {

@@ -14,14 +14,14 @@ export const AuthProvider = ({ children }) => {
     const userName = Cookies.get("user_name");
     const userId = Cookies.get("user_id");
     if (userName) {
-      setUserName(JSON.parse(userName));
+      setUserName(userName);
     }
     if (userId) {
-      setUserId(JSON.parse(userId));
+      setUserId(userId);
     }
   }, []);
 
-  const login = (user) => {
+  const login = ({ userName, userId }) => {
     // Logic to authenticate user
     setUserName(userName);
     setUserId(userId);
