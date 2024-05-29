@@ -3,9 +3,15 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Login.css";
 import FacebookButton from "../FacebookButton";
+import { login } from "../../../api/users";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../providers/AuthProvider";
 
 // Correct regular expression for Ukrainian mobile phone numbers
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const { login: addUserDataToStore } = useAuth();
+
   const validationSchema = Yup.object({
     login: Yup.string()
       .max(20, "Must be 20 characters or less")
@@ -27,6 +33,16 @@ const LoginForm = () => {
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
           setSubmitting(false);
+          login(values).then((res) => {
+            if (res.success) {
+              addUserDataToStore({
+                userName: res.first_name + " " + res.last_name,
+                userId: res.id,
+              });
+              navigate("/");
+            } else {
+            }
+          });
         }}
       >
         {({ isSubmitting }) => (

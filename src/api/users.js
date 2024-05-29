@@ -14,6 +14,18 @@ export const createUser = async (data) => {
     return res.json();
   });
 };
+export const login = async (data) => {
+  return fetch(`http://localhost:4000/login`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  }).then((res) => {
+    return res.json();
+  });
+};
 export const blockUser = async (id) => {
   return fetch(`http://localhost:4000/users/${id}`, {
     method: "PATCH",

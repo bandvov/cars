@@ -107,7 +107,7 @@ const Catalog = () => {
           <div className="content__body__elem">
             {cars?.map((car) => (
               <CarCard
-                isFavorited={car.favorite_user_ids.includes(+userId)}
+                isFavorited={car.favorite_user_ids?.includes(+userId)}
                 key={car.id}
                 car={car}
               />

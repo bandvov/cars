@@ -11,26 +11,28 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check for user data in cookies on initial render
-    const userName = Cookies.get("name");
+    const userName = Cookies.get("user_name");
     const userId = Cookies.get("user_id");
     if (userName) {
-      setUserName(userName);
+      setUserName(JSON.parse(userName));
     }
     if (userId) {
-      setUserId(userId);
+      setUserId(JSON.parse(userId));
     }
   }, []);
 
-  const login = (userCredentials) => {
+  const login = (user) => {
     // Logic to authenticate user
-    setUserName(userCredentials);
-    Cookies.set("name", JSON.stringify(userCredentials));
+    setUserName(userName);
+    setUserId(userId);
   };
 
   const logout = () => {
     // Logic to log out user
     setUserName(null);
-    Cookies.remove("name");
+    setUserId(null);
+    Cookies.remove("user_name");
+    Cookies.remove("user_id");
   };
 
   return (
